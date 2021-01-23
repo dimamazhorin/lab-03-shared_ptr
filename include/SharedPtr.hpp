@@ -1,4 +1,4 @@
-// Copyright 2020 Your Name <your_email>
+// Copyright 2020 dima <dmitrymazhorinjr@gmail.com>
 
 #include "atomic"
 #ifndef INCLUDE_HEADER_HPP_
@@ -15,11 +15,11 @@ class SharedPtr {
       : pointerToObject{ptr}, counter(new std::atomic_uint) {
     *counter = 1;
   };
-  SharedPtr(const SharedPtr& r)
+  SharedPtr(const SharedPtr& r) // коснтруктор копирования
       : pointerToObject(r.pointerToObject), counter(r.counter) {
     ++(*counter);
   };
-  SharedPtr(SharedPtr&& r)
+  SharedPtr(SharedPtr&& r) // конструктор перемещения
       : pointerToObject(std::move(r.pointerToObject)),
         counter(std::move(r.counter)) {
     ++(*counter);
